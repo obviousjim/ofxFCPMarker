@@ -53,7 +53,7 @@ bool ofxFCPMarker::parseMarkers(string markerFile){
 								  ofToInt(timecode[3]);
 			markers.push_back(m);
 			   
-			//cout << "timecode of " << m.Start << " comes out to frame " << m.calculatedFrame << endl;
+			cout << "marker of type " << m.Type << " with timecode of " << m.Start << " comes out to frame " << m.calculatedFrame << endl;
 		}
 
 		//cout << line << endl;
@@ -70,15 +70,21 @@ vector<FCPMarker>& ofxFCPMarker::getMarkers(){
 bool ofxFCPMarker::validateType(string type){
 	
 	if(acceptedTypes.size() == 0){
+		cout << "by default validated type " << type << endl;
 		return true;
 	}
 	
 	for(int i = 0; i < acceptedTypes.size(); i++){
 		if(type == acceptedTypes[i]){
+			cout << "validated type " << type << endl;
 			return true;
 		}
 	}
 	return false;
+}
+
+void ofxFCPMarker::addTypeFilter(string acceptedType){
+	acceptedTypes.push_back(acceptedType);
 }
 
 void ofxFCPMarker::setTypeFilters(vector<string> types){

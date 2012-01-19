@@ -27,6 +27,7 @@ class ofxFCPMarker
 	
 	void setVideoFPS(int fps);
 	bool parseMarkers(string markerFile);
+	void addTypeFilter(string acceptedType);
 	void setTypeFilters(vector<string> acceptedTypes);
 	bool isLoaded();
 	
